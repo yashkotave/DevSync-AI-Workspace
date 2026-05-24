@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { Sidebar } from '../components/layout/Sidebar.jsx';
 import { TopHeader } from '../components/layout/TopHeader.jsx';
@@ -9,6 +10,11 @@ import { CreateTaskModal } from '../components/modals/CreateTaskModal.jsx';
 import { useTask } from '../context/TaskContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { apiClient } from '../api/axios.js';
+
+const dashboardWrapperVariants = {
+  initial: { opacity: 0, y: 10, scale: 0.99 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1] } }
+};
 
 const DashboardPage = () => {
   const { tasks, updateStatus, deleteTask, isCreateModalOpen, setIsCreateModalOpen } = useTask();
@@ -44,7 +50,7 @@ const DashboardPage = () => {
       <Sidebar />
       <div className="ml-14 md:ml-56">
         <TopHeader />
-        <main className="space-y-6 p-4 md:p-8">
+        <motion.main className="space-y-6 p-4 md:p-8" initial="initial" animate="animate" variants={dashboardWrapperVariants}>
           <div className="rounded-3xl border border-border bg-white p-6 shadow-soft">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -86,7 +92,7 @@ const DashboardPage = () => {
               <KanbanBoard tasks={filteredTasks} onSelectTask={setActiveTask} onUpdateStatus={updateStatus} />
             </div>
           )}
-        </main>
+        </motion.main>
       </div>
       <TaskDetailModal task={activeTask} open={Boolean(activeTask)} onClose={() => setActiveTask(null)} />
       <CreateTaskModal open={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />

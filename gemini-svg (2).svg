@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="sqBlue1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="sqBlue2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    
+    <linearGradient id="sqGreen1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="sqGreen2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    
+    <filter id="meshGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <g transform="translate(15, 15)">
+    
+    <rect x="15" y="15" width="160" height="160" rx="36" fill="url(#sqBlue1)" />
+    <path d="M 85 70 L 65 95 L 85 120" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+    <line x1="115" y1="65" x2="95" y2="125" stroke="#ffffff" stroke-width="12" stroke-linecap="round" opacity="0.6" />
+
+    <rect x="195" y="15" width="160" height="160" rx="36" fill="url(#sqBlue2)" />
+    <path d="M 250 95 C 250 70, 300 70, 300 95 C 300 120, 250 120, 250 95 Z" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" opacity="0.9" />
+
+    <rect x="15" y="195" width="160" height="160" rx="36" fill="url(#sqGreen1)" />
+    <g filter="url(#meshGlow)">
+      <circle cx="95" cy="275" r="14" fill="#ffffff" />
+      <circle cx="65" cy="245" r="8" fill="#a7f3d0" />
+      <circle cx="125" cy="245" r="8" fill="#a7f3d0" />
+      <circle cx="65" cy="305" r="8" fill="#a7f3d0" />
+      <circle cx="125" cy="305" r="8" fill="#a7f3d0" />
+      <line x1="95" y1="275" x2="65" y2="245" stroke="#ffffff" stroke-width="4" opacity="0.5" />
+      <line x1="95" y1="275" x2="125" y2="245" stroke="#ffffff" stroke-width="4" opacity="0.5" />
+      <line x1="95" y1="275" x2="65" y2="305" stroke="#ffffff" stroke-width="4" opacity="0.5" />
+      <line x1="95" y1="275" x2="125" y2="305" stroke="#ffffff" stroke-width="4" opacity="0.5" />
+    </g>
+
+    <rect x="195" y="195" width="160" height="160" rx="36" fill="url(#sqGreen2)" />
+    <line x1="290" y1="245" x2="310" y2="305" stroke="#ffffff" stroke-width="12" stroke-linecap="round" opacity="0.6" />
+    <path d="M 260 270 L 280 295 L 300 270" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+    
+  </g>
+</svg>

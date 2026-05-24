@@ -16,9 +16,10 @@ export const TaskCard = ({ task, onSelect, onUpdateStatus }) => {
 
   return (
     <motion.div
-      whileHover={{ y: -1, boxShadow: '0 8px 16px rgba(0,0,0,0.08)' }}
-      transition={{ duration: 0.15, ease: 'easeOut' }}
-      className="group rounded-2xl border border-border bg-white p-4 transition duration-150"
+      layout
+      whileHover={{ y: -2, boxShadow: '0 12px 20px -5px rgba(0, 0, 0, 0.04)' }}
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
+      className="group cursor-pointer rounded-2xl border border-border bg-white p-4 transition duration-150"
       onClick={onSelect}
     >
       <div className="flex items-start justify-between gap-3">

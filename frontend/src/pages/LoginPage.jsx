@@ -1,10 +1,25 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { apiClient } from '../api/axios.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { toast } from 'react-hot-toast';
 import { BrandLogo } from '../components/BrandLogo.jsx';
+
+const homeContainerVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.06 }
+  }
+};
+
+const homeItemVariants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }
+};
 
 const LoginPage = () => {
   const [loginMode, setLoginMode] = useState(true);
@@ -42,14 +57,22 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-surface px-4 py-10 md:px-8">
-      <div className="mx-auto max-w-3xl rounded-[32px] border border-border bg-white p-8 shadow-soft">
-        <div className="mb-8 flex flex-col items-center justify-center gap-3 text-center">
+    <motion.div
+      className="min-h-screen bg-surface px-4 py-10 md:px-8"
+      initial="hidden"
+      animate="visible"
+      variants={homeContainerVariants}
+    >
+      <motion.div
+        className="mx-auto max-w-3xl rounded-[32px] border border-border bg-white p-8 shadow-soft"
+        variants={homeItemVariants}
+      >
+        <motion.div className="mb-8 flex flex-col items-center justify-center gap-3 text-center" variants={homeItemVariants}>
           <BrandLogo />
           <p className="max-w-xl text-sm text-text-secondary">Enterprise-grade Agile planning with AI-powered sprint assistance.</p>
-        </div>
+        </motion.div>
 
-        <div className="mb-6 flex items-center justify-center gap-2 rounded-3xl bg-surface p-2">
+        <motion.div className="mb-6 flex items-center justify-center gap-2 rounded-3xl bg-surface p-2" variants={homeItemVariants}>
           <button
             onClick={() => setLoginMode(true)}
             className={`w-1/2 rounded-2xl py-3 text-sm font-semibold transition ${loginMode ? 'bg-white text-primary shadow-soft' : 'text-text-secondary hover:text-primary'}`}
@@ -62,11 +85,11 @@ const LoginPage = () => {
           >
             Register
           </button>
-        </div>
+        </motion.div>
 
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <motion.form className="space-y-5" onSubmit={handleSubmit} variants={homeItemVariants}>
           {!loginMode && (
-            <div>
+            <motion.div variants={homeItemVariants}>
               <label className="mb-2 block text-sm font-semibold text-text-secondary">Name</label>
               <input
                 value={name}
@@ -74,9 +97,9 @@ const LoginPage = () => {
                 className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text-primary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 placeholder="Full name"
               />
-            </div>
+            </motion.div>
           )}
-          <div>
+          <motion.div variants={homeItemVariants}>
             <label className="mb-2 block text-sm font-semibold text-text-secondary">Email</label>
             <input
               type="email"
@@ -85,8 +108,8 @@ const LoginPage = () => {
               className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text-primary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               placeholder="you@example.com"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={homeItemVariants}>
             <label className="mb-2 block text-sm font-semibold text-text-secondary">Password</label>
             <input
               type="password"
@@ -95,9 +118,9 @@ const LoginPage = () => {
               className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text-primary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               placeholder="Enter password"
             />
-          </div>
+          </motion.div>
           {!loginMode && (
-            <div>
+            <motion.div variants={homeItemVariants}>
               <label className="mb-2 block text-sm font-semibold text-text-secondary">Role</label>
               <select
                 value={role}
@@ -107,18 +130,20 @@ const LoginPage = () => {
                 <option value="Developer">Developer</option>
                 <option value="Manager">Manager</option>
               </select>
-            </div>
+            </motion.div>
           )}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-primary/90 disabled:opacity-60"
-          >
-            {loginMode ? 'Sign In' : 'Create Account'}
-          </button>
-        </form>
-      </div>
-    </div>
+          <motion.div variants={homeItemVariants}>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-primary/90 disabled:opacity-60"
+            >
+              {loginMode ? 'Sign In' : 'Create Account'}
+            </button>
+          </motion.div>
+        </motion.form>
+      </motion.div>
+    </motion.div>
   );
 };
 
