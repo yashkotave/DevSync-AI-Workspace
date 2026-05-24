@@ -2,6 +2,7 @@ import { Bell, Plus } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useTask } from '../../context/TaskContext.jsx';
 import { useLocation, Link } from 'react-router-dom';
+import { BrandLogo } from '../BrandLogo.jsx';
 
 export const TopHeader = () => {
   const { user } = useAuth();
@@ -12,12 +13,8 @@ export const TopHeader = () => {
   return (
     <header className="sticky top-0 z-10 flex h-[64px] items-center justify-between gap-4 border-b border-border bg-white px-4 shadow-sm md:px-8">
       <div className="flex items-center gap-3">
-        <Link to="/" className="mr-2 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary text-lg font-bold">DS</div>
-          <div className="hidden flex-col leading-none sm:flex">
-            <span className="text-sm font-semibold font-[Plus Jakarta Sans] text-text-primary">DevSync</span>
-            <span className="text-xs text-text-secondary">Workspace</span>
-          </div>
+        <Link to="/" className="mr-2">
+          <BrandLogo />
         </Link>
         {currentPage && <h1 className="text-lg font-semibold font-[Plus Jakarta Sans] text-text-primary">{currentPage}</h1>}
       </div>

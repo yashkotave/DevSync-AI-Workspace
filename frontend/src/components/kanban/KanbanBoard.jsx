@@ -25,7 +25,7 @@ export const KanbanBoard = ({ tasks, onSelectTask, onUpdateStatus }) => {
               </div>
               <div className="space-y-3">
                 {columnTasks.map((task, index) => (
-                  <motion.div key={task._id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}>
+                  <motion.div key={task._id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.15, ease: 'easeOut', delay: index * 0.02 }}>
                     <TaskCard task={task} onSelect={() => onSelectTask(task)} onUpdateStatus={onUpdateStatus} />
                   </motion.div>
                 ))}

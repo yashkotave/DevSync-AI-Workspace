@@ -16,7 +16,8 @@ export const TaskCard = ({ task, onSelect, onUpdateStatus }) => {
 
   return (
     <motion.div
-      whileHover={{ y: -2, boxShadow: '0 12px 24px rgba(0,0,0,0.08)' }}
+      whileHover={{ y: -1, boxShadow: '0 8px 16px rgba(0,0,0,0.08)' }}
+      transition={{ duration: 0.15, ease: 'easeOut' }}
       className="group rounded-2xl border border-border bg-white p-4 transition duration-150"
       onClick={onSelect}
     >

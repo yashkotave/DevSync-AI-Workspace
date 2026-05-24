@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Zap, Users, BarChart3, Lock, Grid, Sparkles } from 'lucide-react';
 import { apiClient } from '../api/axios.js';
+import { BrandLogo } from '../components/BrandLogo.jsx';
 
 const HomePage = () => {
   const [publicTasks, setPublicTasks] = useState([]);
@@ -73,9 +74,8 @@ const HomePage = () => {
         scrolled ? 'shadow-md' : 'border-b border-[#E2E4E9]'
       }`} style={{ height: '60px' }}>
         <div className="h-full max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-2xl bg-[#EBF1FD] flex items-center justify-center text-[#2D6ADF] font-bold text-lg">DS</div>
-            <span className="hidden sm:block text-lg font-bold font-[Plus Jakarta Sans] text-[#2D6ADF]">DevSync</span>
+          <Link to="/" className="flex items-center">
+            <BrandLogo />
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm text-[#475569] hover:text-[#2D6ADF] transition">Features</a>
@@ -94,25 +94,25 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1 
             className="text-5xl md:text-6xl font-bold font-[Plus Jakarta Sans] mb-6"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
           >
             All <span className="text-[#7C3AED]">Work</span>. <span className="text-[#2D6ADF]">All</span> <span className="text-[#16A34A]">Teams</span>. One Place.
           </motion.h1>
           <motion.p 
             className="text-xl text-[#475569] mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
           >
             Manage projects, track tasks, and ship faster with AI-powered sprint planning.
           </motion.p>
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
           >
             <Link to="/login?mode=register" className="px-6 py-3 bg-[#2D6ADF] text-white font-semibold rounded-lg hover:bg-[#1A56C4] transition inline-flex items-center justify-center gap-2">
               Get Started Free <ArrowRight size={18} />
@@ -125,7 +125,7 @@ const HomePage = () => {
             className="text-sm text-[#475569] mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
           >
             Trusted by 10,000+ teams
           </motion.p>
@@ -133,7 +133,7 @@ const HomePage = () => {
             className="flex justify-center gap-4 mb-12 flex-wrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
           >
             {['TechCorp', 'InnovateLabs', 'DevStudio', 'CloudSys', 'BuildCo'].map((company) => (
               <div key={company} className="px-4 py-2 bg-[#E2E4E9] text-[#64748B] text-xs font-medium rounded-full">
@@ -145,9 +145,9 @@ const HomePage = () => {
           {/* Browser Mockup */}
           <motion.div 
             className="rounded-2xl border-2 border-[#E2E4E9] overflow-hidden bg-white shadow-lg"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
           >
             <div className="bg-[#F0F1F5] px-4 py-3 flex gap-2">
               <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
@@ -178,9 +178,9 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <h2 className="text-4xl font-bold font-[Plus Jakarta Sans] text-[#0F172A] mb-4">A Complete Suite for Modern Work</h2>
@@ -199,9 +199,9 @@ const HomePage = () => {
               <motion.div
                 key={idx}
                 className="bg-white rounded-2xl p-6 border border-[#E2E4E9] hover:shadow-lg transition hover:-translate-y-1"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.15, ease: 'easeOut', delay: idx * 0.02 }}
                 viewport={{ once: true, margin: '-80px' }}
               >
                 <div className="w-12 h-12 rounded-2xl bg-[#EBF1FD] flex items-center justify-center text-[#2D6ADF] mb-4">
@@ -220,9 +220,9 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto">
           <motion.h2
             className="text-4xl font-bold font-[Plus Jakarta Sans] text-[#0F172A] mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             viewport={{ once: true, margin: '-80px' }}
           >
             Solutions for Every Team
@@ -254,9 +254,9 @@ const HomePage = () => {
 
             <motion.div
               className="bg-[#EBF1FD] rounded-2xl p-8 border-2 border-[#2D6ADF]/20"
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 8 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               viewport={{ once: true, margin: '-80px' }}
             >
               <h3 className="text-lg font-semibold text-[#0F172A] mb-6">Workspace Preview</h3>
@@ -284,9 +284,9 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <h2 className="text-4xl font-bold font-[Plus Jakarta Sans] text-[#0F172A] mb-2">Live Project Board</h2>
@@ -298,7 +298,7 @@ const HomePage = () => {
               className="bg-white rounded-2xl p-12 text-center border border-[#E2E4E9]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               viewport={{ once: true, margin: '-80px' }}
             >
               <p className="text-[#475569] mb-4">No public tasks yet. Managers can mark tasks as public.</p>
@@ -311,7 +311,7 @@ const HomePage = () => {
               className="grid md:grid-cols-4 gap-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               viewport={{ once: true, margin: '-80px' }}
             >
               {/* To Do Column */}
@@ -394,9 +394,9 @@ const HomePage = () => {
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.15, ease: 'easeOut', delay: idx * 0.02 }}
                 viewport={{ once: true, margin: '-80px' }}
               >
                 <div className="text-5xl font-bold font-[Plus Jakarta Sans] text-[#2D6ADF] mb-2">{stat.value}</div>
@@ -412,27 +412,27 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto text-center text-white">
           <motion.h2
             className="text-4xl font-bold font-[Plus Jakarta Sans] mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             viewport={{ once: true, margin: '-80px' }}
           >
             Ready to Transform Your Workflow?
           </motion.h2>
           <motion.p
             className="text-lg mb-8 opacity-90"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
             viewport={{ once: true, margin: '-80px' }}
           >
             Join thousands of teams already using DevSync
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.15, ease: 'easeOut', delay: 0.03 }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <Link to="/login?mode=register" className="px-6 py-3 bg-white text-[#2D6ADF] font-semibold rounded-lg hover:bg-opacity-90 transition inline-flex items-center justify-center gap-2">

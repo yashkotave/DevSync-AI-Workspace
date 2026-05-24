@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import { Briefcase, Grid, Home, LogOut, Users } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { Grid, Home, LogOut, Users } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { BrandLogo } from '../BrandLogo.jsx';
 
 const navItems = [
   { label: 'Dashboard', icon: Home, to: '/dashboard' },
@@ -22,14 +23,10 @@ export const Sidebar = () => {
     <aside className="fixed inset-y-0 left-0 z-20 w-14 border-r border-border bg-surface md:w-56">
       <div className="flex h-full flex-col justify-between px-3 py-4">
         <div className="space-y-6">
-          <div className="flex h-12 items-center justify-center md:justify-start gap-2 px-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <Briefcase size={18} />
-            </div>
-            <div className="hidden flex-col md:flex">
-              <span className="text-lg font-semibold tracking-tight text-primary font-[Plus Jakarta Sans]">DevSync</span>
-              <span className="text-xs text-text-secondary uppercase tracking-[0.24em]">Workspace</span>
-            </div>
+          <div className="flex h-12 items-center justify-center md:justify-start px-2">
+            <Link to="/" className="w-full">
+              <BrandLogo />
+            </Link>
           </div>
 
           <nav className="space-y-2">

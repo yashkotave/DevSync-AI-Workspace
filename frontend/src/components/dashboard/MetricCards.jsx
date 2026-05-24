@@ -20,9 +20,9 @@ export const MetricCards = ({ tasks }) => {
       {cards.map((card, index) => (
         <motion.div
           key={card.key}
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.08, duration: 0.28 }}
+          transition={{ duration: 0.15, ease: 'easeOut', delay: index * 0.02 }}
           className="rounded-2xl border border-border bg-white p-5 shadow-soft"
         >
           <div className="flex items-center gap-4">

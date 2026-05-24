@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const apiClient = axios.create({
-  // Localhost ko hataakar Render ka live link daal diya hai
+  // Production API backend endpoint for DevSync
   baseURL: 'https://devsync-ai-workspace.onrender.com/api',
   headers: { 'Content-Type': 'application/json' }
 });

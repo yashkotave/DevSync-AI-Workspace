@@ -66,12 +66,14 @@ export const CreateTaskModal = ({ open, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.15, ease: 'easeOut' }}
         >
           <motion.div
             className="w-full max-w-xl rounded-3xl bg-white p-8 shadow-pop"
-            initial={{ y: 22, opacity: 0 }}
+            initial={{ y: 8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 22, opacity: 0 }}
+            exit={{ y: 8, opacity: 0 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
           >
             <div className="mb-6 flex items-center justify-between">
               <div>

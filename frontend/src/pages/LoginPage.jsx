@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { apiClient } from '../api/axios.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { toast } from 'react-hot-toast';
+import { BrandLogo } from '../components/BrandLogo.jsx';
 
 const LoginPage = () => {
   const [loginMode, setLoginMode] = useState(true);
@@ -44,9 +45,8 @@ const LoginPage = () => {
     <div className="min-h-screen bg-surface px-4 py-10 md:px-8">
       <div className="mx-auto max-w-3xl rounded-[32px] border border-border bg-white p-8 shadow-soft">
         <div className="mb-8 flex flex-col items-center justify-center gap-3 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-primary/10 text-primary text-3xl font-bold">DS</div>
-          <h1 className="text-3xl font-bold font-[Plus Jakarta Sans] text-text-primary">DevSync Workspace</h1>
-          <p className="max-w-xl text-sm text-text-secondary">A light, professional Agile planning workspace with AI-powered sprint assistance.</p>
+          <BrandLogo />
+          <p className="max-w-xl text-sm text-text-secondary">Enterprise-grade Agile planning with AI-powered sprint assistance.</p>
         </div>
 
         <div className="mb-6 flex items-center justify-center gap-2 rounded-3xl bg-surface p-2">
