@@ -15,6 +15,7 @@ export const CreateTaskModal = ({ open, onClose }) => {
   const [priority, setPriority] = useState('Medium');
   const [assignedTo, setAssignedTo] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isPublic, setIsPublic] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -40,11 +41,12 @@ export const CreateTaskModal = ({ open, onClose }) => {
     }
     setSubmitting(true);
     try {
-      await createTask({ title, description, priority, assignedTo });
+      await createTask({ title, description, priority, assignedTo, isPublic });
       setTitle('');
       setDescription('');
       setPriority('Medium');
       setAssignedTo(team[0]?._id || '');
+      setIsPublic(false);
       setIsCreateModalOpen(false);
       onClose();
     } catch (error) {
@@ -127,6 +129,18 @@ export const CreateTaskModal = ({ open, onClose }) => {
                     ))}
                   </select>
                 </div>
+              </div>
+              <div className="rounded-3xl border border-[#E2E4E9] bg-[#F9FAFB] p-4 flex items-center gap-3">
+                <input
+                  id="publicToggle"
+                  type="checkbox"
+                  checked={isPublic}
+                  onChange={(event) => setIsPublic(event.target.checked)}
+                  className="h-4 w-4 rounded border border-border text-primary focus:ring-primary"
+                />
+                <label htmlFor="publicToggle" className="text-sm text-text-secondary">
+                  Show this task on the public homepage board
+                </label>
               </div>
               <div className="flex justify-end gap-3 pt-2">
                 <button

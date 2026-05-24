@@ -12,6 +12,8 @@ export const TaskDetailModal = ({ task, open, onClose }) => {
   const [aiData, setAiData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [isPublic, setIsPublic] = useState(false);
+  const [publicSaving, setPublicSaving] = useState(false);
 
   useEffect(() => {
     if (task) {
@@ -20,6 +22,7 @@ export const TaskDetailModal = ({ task, open, onClose }) => {
         skillTag: task.skillTag,
         complexityScore: task.complexityScore
       } : null);
+      setIsPublic(Boolean(task.isPublic));
     }
   }, [task]);
 
@@ -55,6 +58,23 @@ export const TaskDetailModal = ({ task, open, onClose }) => {
       toast.error('Unable to save AI data');
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handlePublicToggle = async () => {
+    if (!task) return;
+    setPublicSaving(true);
+    try {
+      const response = await apiClient.put(`/tasks/${task._id}`, { isPublic: !isPublic });
+      if (response.data.success) {
+        toast.success(`Task ${!isPublic ? 'published' : 'removed from public board'}`);
+        setIsPublic(!isPublic);
+        fetchTasks();
+      }
+    } catch (error) {
+      toast.error('Unable to update public visibility');
+    } finally {
+      setPublicSaving(false);
     }
   };
 
@@ -173,7 +193,15 @@ export const TaskDetailModal = ({ task, open, onClose }) => {
               </div>
             </div>
             {user.role === 'Manager' && (
-              <div className="mt-6 flex justify-end">
+              <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto] items-center">
+                <button
+                  type="button"
+                  onClick={handlePublicToggle}
+                  disabled={publicSaving}
+                  className="rounded-2xl border border-border bg-white px-5 py-3 text-sm font-semibold text-text-secondary transition hover:border-primary hover:text-primary disabled:opacity-60"
+                >
+                  {isPublic ? 'Remove from Public Board' : 'Show on Public Board'}
+                </button>
                 <button
                   onClick={handleDelete}
                   className="rounded-2xl bg-[#FBE9E7] px-5 py-3 text-sm font-semibold text-[#C62828] transition hover:bg-[#F8B4AF]"

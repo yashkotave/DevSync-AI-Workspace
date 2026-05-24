@@ -32,9 +32,10 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  const updateStatus = async (taskId, status) => {
+  const updateStatus = async (taskId, updates) => {
+    const payload = typeof updates === 'string' ? { status: updates } : updates;
     try {
-      const response = await apiClient.put(`/tasks/${taskId}`, { status });
+      const response = await apiClient.put(`/tasks/${taskId}`, payload);
       if (response.data.success) {
         setTasks((current) => current.map((task) => (task._id === taskId ? response.data.data : task)));
         toast.success('Task status updated');

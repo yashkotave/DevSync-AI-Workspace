@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Premium Tech Gradients -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="syncGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="#f8fafc" rx="40"/>
+
+  <!-- Outer Branding Rings -->
+  <circle cx="400" cy="400" r="320" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-dasharray="16 16"/>
+  
+  <!-- Main Code-Bracket Dynamic Shape -->
+  <path d="M 280 280 L 180 400 L 280 520" fill="none" stroke="url(#blueGrad)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 520 280 L 620 400 L 520 520" fill="none" stroke="url(#blueGrad)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Central Syncing Nodes -->
+  <circle cx="400" cy="320" r="45" fill="url(#syncGrad)" />
+  <circle cx="400" cy="480" r="45" fill="url(#syncGrad)" />
+  
+  <!-- Connection Arrows/Data Streams -->
+  <path d="M 370 370 C 340 400, 340 400, 370 430" fill="none" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 430 370 C 460 400, 460 400, 430 430" fill="none" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+</svg>

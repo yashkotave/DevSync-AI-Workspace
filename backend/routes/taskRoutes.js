@@ -1,10 +1,11 @@
 const express = require('express');
 const { protect, restrictTo } = require('../middleware/authMiddleware');
-const { createTask, getAllTasks, getTaskById, updateTaskStatus, deleteTask } = require('../controllers/taskController');
+const { createTask, getPublicTasks, getAllTasks, getTaskById, updateTaskStatus, deleteTask } = require('../controllers/taskController');
 const { generateAIInsights, saveAIInsights } = require('../controllers/aiController');
 
 const router = express.Router();
 
+router.get('/public', getPublicTasks);
 router.use(protect);
 router.post('/', restrictTo('Manager'), createTask);
 router.get('/', getAllTasks);
