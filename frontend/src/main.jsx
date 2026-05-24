@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
           <Toaster position="top-right" />
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route
               path="/dashboard"
               element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}
@@ -31,7 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               path="/team"
               element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}
             />
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         </BrowserRouter>
       </TaskProvider>

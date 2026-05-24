@@ -38,6 +38,7 @@ button, input, textarea, select {
 
 * {
   box-sizing: border-box;
+  scroll-margin-top: 70px;
 }
 
 ::-webkit-scrollbar {

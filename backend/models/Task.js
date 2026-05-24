@@ -10,7 +10,8 @@ const taskSchema = new mongoose.Schema(
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     aiRoadmap: { type: [String], default: [] },
     complexityScore: { type: Number, default: 0 },
-    skillTag: { type: String, default: '' }
+    skillTag: { type: String, default: '' },
+    isPublic: { type: Boolean, default: false }
   },
   {
     timestamps: true,
