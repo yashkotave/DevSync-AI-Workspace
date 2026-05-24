@@ -115,6 +115,28 @@ DevSync-AI-Workspace
    node git-sync.js
    ```
 
+**Secure git-sync usage**
+
+If you want the `git-sync.js` script to push using a GitHub personal access token, do NOT embed the token into the file. Instead run the script with the token and target repository provided via environment variables.
+
+Linux / macOS example:
+
+```bash
+GITHUB_PAT=your_personal_access_token_here GITHUB_REPO=github.com/your-username/DevSync-AI-Workspace.git node git-sync.js
+```
+
+Windows PowerShell example:
+
+```powershell
+$env:GITHUB_PAT = 'your_personal_access_token_here'
+$env:GITHUB_REPO = 'github.com/your-username/DevSync-AI-Workspace.git'
+node git-sync.js
+```
+
+Notes:
+- Never commit `GITHUB_PAT` values into the repository. Use environment variables or secret stores.
+- The script will fall back to `git push origin main` if these environment variables are not set.
+
 ## Environment Reference
 
 # DevSync Workspace

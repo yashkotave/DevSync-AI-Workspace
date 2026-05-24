@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { apiClient } from '../api/axios.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { toast } from 'react-hot-toast';
@@ -13,6 +14,12 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('mode') === 'register') setLoginMode(false);
+  }, [location.search]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
