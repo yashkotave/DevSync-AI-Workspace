@@ -1,4 +1,4 @@
-# DevSync Workspace
+# DevSync AI Workspace
 
 DevSync Workspace is an Agile/Kanban workflow management system designed for modern engineering teams. It features a clean, GoodDay-inspired light theme and an integrated AI Sprint Assistant powered by Google Gemini.
 
